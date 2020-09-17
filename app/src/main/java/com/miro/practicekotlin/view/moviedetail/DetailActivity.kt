@@ -1,7 +1,8 @@
-package com.miro.practicekotlin
+package com.miro.practicekotlin.view.moviedetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.miro.practicekotlin.R
 
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
