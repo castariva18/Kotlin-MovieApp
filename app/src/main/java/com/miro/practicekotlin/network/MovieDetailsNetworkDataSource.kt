@@ -47,7 +47,5 @@ class MovieDetailsNetworkDataSource(
         catch (e: Exception){
             Log.e("MovieDetailsDataSource", e.message.toString())
         }
-
-
     }
 }
