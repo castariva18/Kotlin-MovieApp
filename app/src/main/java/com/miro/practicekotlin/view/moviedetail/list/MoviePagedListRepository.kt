@@ -1,4 +1,4 @@
-package com.miro.practicekotlin
+package com.miro.practicekotlin.view.moviedetail.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations

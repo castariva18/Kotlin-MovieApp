@@ -14,8 +14,7 @@ import com.miro.practicekotlin.R
 import com.miro.practicekotlin.model.Movie
 import com.miro.practicekotlin.network.NetworkState
 import com.miro.practicekotlin.network.POSTER_BASE_URL
-import com.miro.practicekotlin.view.moviedetail.DetailActivity
-import kotlinx.android.synthetic.main.activity_main.view.*
+import com.miro.practicekotlin.view.moviedetail.detail.DetailActivity
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 import kotlinx.android.synthetic.main.network_state_item.view.*
 

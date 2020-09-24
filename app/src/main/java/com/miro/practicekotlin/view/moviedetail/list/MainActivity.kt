@@ -1,6 +1,5 @@
-package com.miro.practicekotlin
+package com.miro.practicekotlin.view.moviedetail.list
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.miro.practicekotlin.R
 import com.miro.practicekotlin.adapter.PopularListAdapter
 import com.miro.practicekotlin.network.ApiClient
 import com.miro.practicekotlin.network.ApiService
@@ -27,7 +27,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val apiService: ApiService = ApiClient.getClient()
 
-        movieRepository = MoviePagedListRepository(apiService)
+        movieRepository =
+            MoviePagedListRepository(
+                apiService
+            )
 
         viewModel = getViewModel()
 
@@ -68,7 +71,9 @@ class MainActivity : AppCompatActivity() {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
-                return MainActivityViewModel(movieRepository) as T
+                return MainActivityViewModel(
+                    movieRepository
+                ) as T
             }
         })[MainActivityViewModel::class.java]
     }

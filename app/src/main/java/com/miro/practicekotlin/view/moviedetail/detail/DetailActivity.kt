@@ -1,4 +1,4 @@
-package com.miro.practicekotlin.view.moviedetail
+package com.miro.practicekotlin.view.moviedetail.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,23 +16,24 @@ import com.miro.practicekotlin.network.ApiService
 import com.miro.practicekotlin.network.NetworkState
 import com.miro.practicekotlin.model.MovieDetails
 import kotlinx.android.synthetic.main.activity_detail.*
-import java.text.NumberFormat
+import kotlinx.android.synthetic.main.movie_list_item.*
 import java.util.*
 
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MovieDetailViewModel
-    private lateinit var movieDetailsRepository: MovieDetailsRepository
+    private lateinit var movieRepository: MovieDetailsRepository
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val movieId: Int = 1
+        val movieId: Int = intent.getIntExtra("id",1)
 
-        val apiService: ApiService = ApiClient.getClient()
-        movieDetailsRepository = MovieDetailsRepository(apiService)
+        val apiService : ApiService = ApiClient.getClient()
+        movieRepository = MovieDetailsRepository(apiService)
 
         viewModel = getViewModel(movieId)
 
@@ -42,10 +43,12 @@ class DetailActivity : AppCompatActivity() {
 
         viewModel.networkState.observe(this, Observer {
             progress_bar.visibility = if (it == NetworkState.LOADING) View.VISIBLE else View.GONE
+
         })
+
     }
 
-    fun bindUI(it: MovieDetails) {
+    fun bindUI( it: MovieDetails){
         tv_title_detail.text = it.title
         tv_tagline.text = it.tagline
         tv_release_date.text = it.releaseDate
@@ -53,17 +56,20 @@ class DetailActivity : AppCompatActivity() {
         tv_run_time.text = it.runtime.toString() + " minutes"
         tv_overview.text = it.overview
 
-        val moviePosterURL: String = POSTER_BASE_URL + it.posterPath
-        Glide.with(this).load(moviePosterURL).diskCacheStrategy(DiskCacheStrategy.DATA)
-            .into(img_detail)
+        val moviePosterURL = POSTER_BASE_URL + it.posterPath
+        Glide.with(this)
+            .load(moviePosterURL)
+            .into(img_detail);
+
+
     }
 
 
-    private fun getViewModel(movieId: Int): MovieDetailViewModel {
+    private fun getViewModel(movieId:Int): MovieDetailViewModel {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
-                return MovieDetailViewModel(movieDetailsRepository, movieId) as T
+                return MovieDetailViewModel(movieRepository,movieId) as T
             }
         })[MovieDetailViewModel::class.java]
     }
