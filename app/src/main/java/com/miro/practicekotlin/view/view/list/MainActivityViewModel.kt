@@ -1,4 +1,4 @@
-package com.miro.practicekotlin.view.moviedetail.list
+package com.miro.practicekotlin.view.view.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList

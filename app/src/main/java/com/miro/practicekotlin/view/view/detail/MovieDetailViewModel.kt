@@ -1,10 +1,9 @@
-package com.miro.practicekotlin.view.moviedetail.detail
+package com.miro.practicekotlin.view.view.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.miro.practicekotlin.model.MovieDetails
 import com.miro.practicekotlin.network.NetworkState
-import com.miro.practicekotlin.view.moviedetail.detail.MovieDetailsRepository
 import io.reactivex.disposables.CompositeDisposable
 
 class MovieDetailViewModel(private val movieRepository: MovieDetailsRepository, movieId: Int) :

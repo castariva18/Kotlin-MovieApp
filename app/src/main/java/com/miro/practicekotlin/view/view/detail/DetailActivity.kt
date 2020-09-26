@@ -1,4 +1,4 @@
-package com.miro.practicekotlin.view.moviedetail.detail
+package com.miro.practicekotlin.view.view.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,15 +9,12 @@ import com.miro.practicekotlin.R
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.miro.practicekotlin.network.POSTER_BASE_URL
 import com.miro.practicekotlin.network.ApiClient
 import com.miro.practicekotlin.network.ApiService
 import com.miro.practicekotlin.network.NetworkState
 import com.miro.practicekotlin.model.MovieDetails
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.movie_list_item.*
-import java.util.*
 
 
 class DetailActivity : AppCompatActivity() {
